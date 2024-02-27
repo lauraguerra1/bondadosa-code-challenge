@@ -5,7 +5,8 @@
   padding: 0.5rem;
   position: sticky;
   top: 0;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgb(105, 126, 102);
+  z-index: 10;
 }
 
 #title {
