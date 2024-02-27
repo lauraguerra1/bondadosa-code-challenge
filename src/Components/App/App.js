@@ -1,7 +1,9 @@
 import './App.css';
 import { useEffect } from 'react';
 import { getItem } from '../../utils/apiCalls';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Routes, Route } from 'react-router-dom';
+import Home from '../Home/Home';
+import Cart from '../Cart/Cart';
 
 function App() {
   useEffect(() => {
@@ -25,7 +27,12 @@ function App() {
           <NavLink to='/cart'>CART</NavLink>
         </nav>
       </header>
-      <main></main>
+      <main>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/cart' element={<Cart />} />
+        </Routes>
+      </main>
     </div>
   );
 }
