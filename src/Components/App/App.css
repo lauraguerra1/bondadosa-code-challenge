@@ -14,6 +14,32 @@
   font-size: 25px;
 }
 
+.cartBtn {
+  position: relative;
+  padding: 0.25rem;
+  display: block;
+  width: 32px;
+}
+
+.cartCount {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1rem;
+  min-width: fit-content;
+  height: 1rem;
+  border-radius: 9999px;
+  background-color: #dc2626;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cartCount p {
+  padding: 0.25rem;
+}
+
 @media screen and (min-width: 450px) {
   #title {
   font-size: 35px;
