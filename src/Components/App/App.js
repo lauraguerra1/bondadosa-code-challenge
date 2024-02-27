@@ -22,7 +22,7 @@ function App() {
   return (
     <div className='app'>
       <header>
-        <h1>GROCERY STORE</h1>
+        <h1 id='title'>GROCERY STORE</h1>
         <nav>
           <NavLink to='/cart'>CART</NavLink>
         </nav>
