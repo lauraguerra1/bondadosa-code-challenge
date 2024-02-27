@@ -11,3 +11,44 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+*, button {
+  font-family: "Poppins", sans-serif;
+}
+
+a {
+  color: black;
+}
+
+.text-md {
+  font-size: 18px;
+}
+
+.text-lg {
+  font-size: 20px;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.semi-bold {
+  font-weight: 500;
+}
+
+.bolder {
+  font-weight: 600;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.margin-sm {
+  margin: 2px;
+}
+
+.icon {
+  width: 25px;
+  height: 25px;
+}
