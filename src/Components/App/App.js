@@ -1,7 +1,7 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import { getItem } from '../../utils/apiCalls';
-import { NavLink, Routes, Route } from 'react-router-dom';
+import { NavLink, Routes, Route, Link } from 'react-router-dom';
 import Home from '../Home/Home';
 import Cart from '../Cart/Cart';
 
@@ -23,7 +23,9 @@ function App() {
   return (
     <div className='app'>
       <header>
-        <h1 id='title'>VIRTUAL GROCER</h1>
+        <Link to='/' id='title'>
+          VIRTUAL GROCER
+        </Link>
         <nav>
           <NavLink to='/cart' className='cartBtn'>
             <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' strokeWidth={1.5} stroke='currentColor' className='icon'>

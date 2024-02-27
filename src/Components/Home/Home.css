@@ -1,6 +1,6 @@
 .home {
   position: relative;
-  height: calc(100vh - 58px);
+  height: calc(100vh - 70px);
   display: flex;
   justify-content: center;
   padding: 0px 20px;

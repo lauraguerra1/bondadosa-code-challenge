@@ -12,6 +12,8 @@
 #title {
   margin: 0px;
   font-size: 25px;
+  font-weight: 400;
+  text-decoration: none;
 }
 
 .cartBtn {

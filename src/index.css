@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+*, button {
+  font-family: "Poppins", sans-serif;
+}
+
 a {
   color: black;
 }
@@ -32,6 +36,19 @@ a {
   font-weight: 500;
 }
 
+.bolder {
+  font-weight: 600;
+}
+
 .text-center {
   text-align: center;
+}
+
+.margin-sm {
+  margin: 2px;
+}
+
+.icon {
+  width: 25px;
+  height: 25px;
 }
