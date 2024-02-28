@@ -10,7 +10,7 @@
 .small-screen-search-form input {
   border: none;
   border-radius: 50px 0px 0px 50px;
-  width: 200px;
+  width: 100%;
 }
 
 .search-form input:focus,
@@ -20,6 +20,7 @@
 
 .search-form {
   display: none;
+  width: 250px;
 }
 
 .small-screen-search-form {
