@@ -16,6 +16,13 @@
   text-decoration: none;
 }
 
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  height: 100%;
+}
+
 .cartBtn {
   position: relative;
   padding: 0.25rem;
@@ -40,6 +47,30 @@
 
 .cartCount p {
   padding: 0.25rem;
+}
+
+.searchForm {
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  border-radius: 50px;
+}
+
+.searchForm input{
+  border: none;
+  border-radius: 50px;
+  width: 200px
+}
+
+.searchBtn {
+  background-color: rgb(255, 255, 179);
+  border-radius: 100%;
+  width: 40px;
+  height: 40px;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  border: none;
 }
 
 @media screen and (min-width: 450px) {
