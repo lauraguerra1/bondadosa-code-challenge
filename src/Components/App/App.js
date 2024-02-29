@@ -12,25 +12,21 @@ function App() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [searchTerm, setSearchTerm] = useState(searchParams.get('q') || '');
 
+  const updateCart = (newItem) =>
+    setCart((prev) => {
+      if (prev.find((cartItem) => cartItem.food.foodId === newItem.food.foodId)) {
+        return prev.filter((cartItem) => cartItem.food.foodId !== newItem.food.foodId);
+      } else {
+        return [...prev, newItem];
+      }
+    });
+
   const updateSearchTerm = (value) => setSearchTerm(value);
   const updateSearchParam = (value) => setSearchParams({ q: searchTerm });
   const clearSearch = () => {
     setSearchParams();
     setSearchTerm('');
   };
-
-  useEffect(() => {
-    const callAPI = async () => {
-      try {
-        const data = await getItem('pasta');
-        console.log('testing api', data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    // callAPI();
-  });
 
   return (
     <div className='app'>
@@ -57,7 +53,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home clearSearch={clearSearch} />} />
           <Route path='/cart' element={<Cart />} />
-          <Route path='/search' element={<SearchResults searchParams={searchParams} />} />
+          <Route path='/search' element={<SearchResults searchParams={searchParams} cart={cart} updateCart={updateCart} />} />
         </Routes>
       </main>
     </div>

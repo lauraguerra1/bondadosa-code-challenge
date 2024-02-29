@@ -4,7 +4,7 @@ import { getItem, getMoreItems } from '../../utils/apiCalls';
 import './SearchResults.css'
 import brokenImg from '../../images/broken-img.png';
 
-const SearchResults = ({ searchParams }) => {
+const SearchResults = ({ searchParams, cart, updateCart }) => {
   const [searchResults, setSearchResults] = useState([]);
   const [nextApi, setNextApi] = useState('')
 
@@ -47,6 +47,7 @@ const SearchResults = ({ searchParams }) => {
           <div className={`single-result ${getOrder(index, uniqueResults.length)} ${index % 2 === 0 ? '' : 'odd'} ${index % 3 === 0 ? 'every-third' : ''}`} key={item.food.foodId}>
             <img src={item.food.image || brokenImg} alt={item.food.label} />
             <p className='semi-bold'>{item.food.label}</p>
+            <button className='add-cart-btn' onClick={() => updateCart(item)}>{cart.find(cartItem => cartItem.food.foodId === item.food.foodId) ? 'REMOVE FROM' : 'ADD TO'} CART</button>
           </div>
         )}
       </div>
@@ -56,7 +57,9 @@ const SearchResults = ({ searchParams }) => {
 }
 
 SearchResults.propTypes = {
-  searchParams: PropTypes.object.isRequired
+  searchParams: PropTypes.object.isRequired, 
+  cart: PropTypes.array.isRequired, 
+  updateCart: PropTypes.func.isRequired
 }
 
 export default SearchResults
