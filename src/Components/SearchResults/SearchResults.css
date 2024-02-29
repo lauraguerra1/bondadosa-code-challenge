@@ -41,6 +41,18 @@
   .odd {
     border-left: 1px solid rgb(208, 207, 207);
   }
+
+  .last {
+    border-bottom: none;
+  }
+
+  .even-length .second-last {
+    border-bottom: none;
+  }
+
+  .odd-length .last {
+    border-right: 1px solid rgb(208, 207, 207);
+  }
 }
 
 @media screen and (min-width: 1500px) {
@@ -55,5 +67,17 @@
   
   .every-third {
     border-left: none;
+  }
+
+  .second-last {
+    border-bottom: none;
+  }
+
+  .odd-length .third-last {
+    border-bottom: none;
+  }
+
+  .even-length .last {
+    border-right: 1px solid rgb(208, 207, 207);
   }
 }
