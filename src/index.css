@@ -16,6 +16,14 @@ code {
   font-family: "Poppins", sans-serif;
 }
 
+*:focus-visible {
+  outline: 2px solid rgb(8, 87, 8);
+}
+
+button {
+  cursor: pointer;
+}
+
 a {
   color: black;
 }
@@ -51,4 +59,5 @@ a {
 .icon {
   width: 25px;
   height: 25px;
+  color: white;
 }

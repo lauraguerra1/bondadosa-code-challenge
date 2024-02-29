@@ -1,8 +1,14 @@
-import React from 'react'
+import PropTypes from 'prop-types';
+import React, { useEffect } from 'react';
 import './Home.css';
 import { Link } from 'react-router-dom';
 
-const Home = () => {
+const Home = ({ clearSearch }) => {
+  
+  useEffect(() => { 
+    clearSearch();
+  }, [])
+  
   return (
     <div className='home'>
       <article className='home-intro'>
@@ -30,4 +36,7 @@ const Home = () => {
   )
 }
 
+Home.propTypes = {
+  clearSearch: PropTypes.func.isRequired,
+};
 export default Home

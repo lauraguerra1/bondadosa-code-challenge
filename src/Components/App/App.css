@@ -1,7 +1,6 @@
 .app header {
-  display: flex; 
-  justify-content: space-between;
-  align-items: center;
+  display: grid; 
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   padding: 0.5rem;
   position: sticky;
   top: 0;
@@ -14,9 +13,18 @@
   font-size: 25px;
   font-weight: 400;
   text-decoration: none;
+  color: white;
+  grid-column: span 5 / span 5;
 }
 
-.cartBtn {
+nav {
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  height: 100%;
+}
+
+.cart-btn {
   position: relative;
   padding: 0.25rem;
   display: block;
@@ -42,8 +50,21 @@
   padding: 0.25rem;
 }
 
+
 @media screen and (min-width: 450px) {
   #title {
   font-size: 35px;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .app header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  nav {
+    justify-content: space-between
   }
 }
