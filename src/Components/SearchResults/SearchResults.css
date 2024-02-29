@@ -32,6 +32,14 @@
   align-self: flex-start;
 }
 
+.view-more {
+  justify-self: center;
+  padding: 0.5rem 2rem;
+  border: none;
+  border-bottom: 1px solid green;
+  background-color: white;
+}
+
 @media screen and (min-width: 900px) {
   .results {
     display: grid;
