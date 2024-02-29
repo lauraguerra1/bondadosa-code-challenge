@@ -5,6 +5,7 @@ import { NavLink, Routes, Route, Link, useSearchParams } from 'react-router-dom'
 import Home from '../Home/Home';
 import Cart from '../Cart/Cart';
 import SearchBar from '../SearchBar/SearchBar';
+import SearchResults from '../SearchResults/SearchResults';
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -56,6 +57,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home clearSearch={clearSearch} />} />
           <Route path='/cart' element={<Cart />} />
+          <Route path='/search' element={<SearchResults searchParams={searchParams} />} />
         </Routes>
       </main>
     </div>
