@@ -27,6 +27,13 @@ const SearchResults = ({ searchParams }) => {
     return <p className='results-page'>search for something</p>
   }
 
+  const getOrder = (index, parentLength) => {
+    if (index === parentLength - 1) return 'last'
+    if (index === parentLength - 2) return 'second-last'
+    if (index === parentLength - 3) return 'third-last'
+    return ''
+  }
+
   const uniqueResults = searchResults.reduce((acc, curr) => {
     if (!acc.find(item => curr.food.foodId === item.food.foodId)) acc.push(curr);
     return acc;
@@ -35,9 +42,9 @@ const SearchResults = ({ searchParams }) => {
   return (
     <section className='results-page'>
     <p className='semi-bold'>Showing {uniqueResults.length} result{uniqueResults.length === 1 ? '' : 's'} for {searchParams.get('q') || ''} </p>
-    <div className={`results ${uniqueResults.length % 2 === 0 ? 'even-length' : 'odd-length'}`}>
+    <div className={`results ${uniqueResults.length % 2 === 0 ? 'even-length' : 'odd-length'} ${uniqueResults.length % 3 === 0 ? 'flush-thirds' : ''} ${uniqueResults.length % 3 === 1 ? 'single-remainder' : ''}`}>
         {uniqueResults.map((item, index) => 
-          <div className={`single-result ${index === uniqueResults.length - 1 ? 'last' : index === uniqueResults.length - 2 ? 'second-last' : index === uniqueResults.length - 3 ? 'third-last' : ''} ${index % 2 === 0 ? '' : 'odd'} ${index % 3 === 0 ? 'every-third' : ''}`} key={item.food.foodId}>
+          <div className={`single-result ${getOrder(index, uniqueResults.length)} ${index % 2 === 0 ? '' : 'odd'} ${index % 3 === 0 ? 'every-third' : ''}`} key={item.food.foodId}>
             <img src={item.food.image || brokenImg} alt={item.food.label} />
             <p className='semi-bold'>{item.food.label}</p>
           </div>

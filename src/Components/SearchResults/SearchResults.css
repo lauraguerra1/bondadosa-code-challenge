@@ -40,7 +40,7 @@
   background-color: white;
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 900px) and (max-width: 1500px){
   .results {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 2fr));
@@ -50,16 +50,16 @@
     border-left: 1px solid rgb(208, 207, 207);
   }
 
+  .odd-length .last {
+    border-right: 1px solid rgb(208, 207, 207);
+  }
+
   .last {
     border-bottom: none;
   }
 
   .even-length .second-last {
     border-bottom: none;
-  }
-
-  .odd-length .last {
-    border-right: 1px solid rgb(208, 207, 207);
   }
 }
 
@@ -77,15 +77,20 @@
     border-left: none;
   }
 
-  .second-last {
+  .last {
     border-bottom: none;
-  }
-
-  .odd-length .third-last {
-    border-bottom: none;
-  }
-
-  .even-length .last {
     border-right: 1px solid rgb(208, 207, 207);
+  }
+
+  .flush-thirds .last {
+    border-right: none;
+  }
+
+  .flush-thirds .third-last, .second-last {
+    border-bottom: none
+  }
+
+  .single-remainder .second-last {
+    border-bottom: 1px solid rgb(208, 207, 207);
   }
 }
