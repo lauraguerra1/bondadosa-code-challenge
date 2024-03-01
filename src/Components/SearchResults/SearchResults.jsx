@@ -20,6 +20,7 @@ const SearchResults = ({ searchParams, cart, updateCart, changeQuantity }) => {
   };
 
   useEffect(() => { 
+    setNextApi('');
     callAPI(getItem, (searchParams.get('q') || ''), 'new');
   }, [searchParams])
 
