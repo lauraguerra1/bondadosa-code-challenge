@@ -4,7 +4,7 @@ import brokenImg from '../../images/broken-img.png'
 
 import './Cart.css'
 
-const Cart = ({ openOrCloseCart, cartOpen, cart, updateCart, changeQuantity }) => {
+const Cart = ({ openOrCloseCart, cartOpen, cart, updateCart, changeQuantity, cartTotal }) => {
 
   return (
     <aside className={`cart ${cartOpen ? 'open' : 'closed'}`}>
@@ -15,6 +15,7 @@ const Cart = ({ openOrCloseCart, cartOpen, cart, updateCart, changeQuantity }) =
           </svg>
         </button>
         <p>Shopping Cart</p>
+        <p>{cartTotal} Items</p>
       </div>
       <div className='cart-contents'>
         {
@@ -36,6 +37,7 @@ const Cart = ({ openOrCloseCart, cartOpen, cart, updateCart, changeQuantity }) =
           )
         }
       </div>
+      <button className='checkout-btn'>CHECHOUT {cartTotal} ITEMS</button>
     </aside>
   )
 }
@@ -45,7 +47,8 @@ Cart.propTypes = {
   updateCart: PropTypes.func.isRequired,
   changeQuantity: PropTypes.func.isRequired,
   cartOpen: PropTypes.bool.isRequired,
-  cart: PropTypes.array.isRequired
+  cart: PropTypes.array.isRequired, 
+  cartTotal: PropTypes.number.isRequired
 }
 
 export default Cart

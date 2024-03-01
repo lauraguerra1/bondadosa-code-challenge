@@ -21,11 +21,12 @@
   justify-content: space-between;
   align-items: center; 
   border-bottom: 1px solid rgb(162, 160, 160);
+  padding: 0px 5px;
+}
 
-  p {
-    flex: 1;
-    text-align: center;
-  }
+.cart-contents {
+  height: calc(100vh - 120px);
+  overflow: auto;
 }
 
 .cart-item {
@@ -63,6 +64,18 @@
 .item-count {
   border: 1px solid black; 
   border-radius: 5px;
+}
+
+.checkout-btn {
+  width: 90%; 
+  background-color: green;
+  color: white; 
+  font-size: larger;
+  border-radius: 25px;
+  border: none;
+  margin: 10px 5%;
+  border: none;
+  height: 35px;
 }
 
 
