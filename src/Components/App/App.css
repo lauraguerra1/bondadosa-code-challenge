@@ -26,9 +26,11 @@ nav {
 
 .cart-btn {
   position: relative;
-  padding: 0px 0.25rem;
   display: block;
   width: 32px;
+  height: 38px;
+  padding: 2px 0px;
+  margin-top: 4px;
   background-color: #00000000;
   border: none;
 }
