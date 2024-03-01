@@ -75,7 +75,7 @@ function App() {
             <Route path='/search' element={<SearchResults searchParams={searchParams} cart={cart} updateCart={updateCart} changeQuantity={changeQuantity} />} />
           </Routes>
         </div>
-        <Cart openOrCloseCart={openOrCloseCart} cartOpen={cartOpen} />
+        <Cart openOrCloseCart={openOrCloseCart} cartOpen={cartOpen} cart={cart} updateCart={updateCart} changeQuantity={changeQuantity} />
       </main>
     </div>
   );
