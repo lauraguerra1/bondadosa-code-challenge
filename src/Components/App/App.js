@@ -43,8 +43,8 @@ function App() {
   };
 
   return (
-    <div className={cartOpen ? 'app cart-open' : 'app'}>
-      <header>
+    <div className='app'>
+      <header className={cartOpen ? 'cart-open' : ''}>
         <Link to='/' id='title'>
           VIRTUAL GROCER
         </Link>
@@ -69,10 +69,12 @@ function App() {
         <SearchBar className={'small-screen-search-form'} searchTerm={searchTerm} updateSearchTerm={updateSearchTerm} updateSearchParam={updateSearchParam} />
       </header>
       <main>
-        <Routes>
-          <Route path='/' element={<Home clearSearch={clearSearch} />} />
-          <Route path='/search' element={<SearchResults searchParams={searchParams} cart={cart} updateCart={updateCart} changeQuantity={changeQuantity} />} />
-        </Routes>
+        <div className={cartOpen ? 'cart-open' : ''}>
+          <Routes>
+            <Route path='/' element={<Home clearSearch={clearSearch} />} />
+            <Route path='/search' element={<SearchResults searchParams={searchParams} cart={cart} updateCart={updateCart} changeQuantity={changeQuantity} />} />
+          </Routes>
+        </div>
         <Cart openOrCloseCart={openOrCloseCart} cartOpen={cartOpen} />
       </main>
     </div>

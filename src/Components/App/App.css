@@ -54,6 +54,23 @@ nav {
   padding: 0.25rem;
 }
 
+.cart-open {
+  max-height: calc(100vh - 109px);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.cart-open::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgb(132, 129, 129);
+  opacity: 0.5;
+  pointer-events: none;
+}
 
 @media screen and (min-width: 450px) {
   #title {
@@ -70,5 +87,9 @@ nav {
 
   nav {
     justify-content: space-between
+  }
+
+  .cart-open {
+    max-height: calc(100vh - 70px);
   }
 }
