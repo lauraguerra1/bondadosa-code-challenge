@@ -26,9 +26,11 @@ nav {
 
 .cart-btn {
   position: relative;
-  padding: 0.25rem;
+  padding: 0px 0.25rem;
   display: block;
   width: 32px;
+  background-color: #00000000;
+  border: none;
 }
 
 .cartCount {

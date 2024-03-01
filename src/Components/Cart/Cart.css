@@ -1,0 +1,48 @@
+.cart {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 0;
+  max-width: 100%;
+  /* Set a maximum width */
+  background-color: white;
+  z-index: 20;
+  transition: width 0.8s ease-in-out;
+  overflow-x: hidden;
+}
+
+.open {
+  display: block;
+  animation: openFull 0.8s ease-in-out forwards;
+}
+
+@media screen and (min-width: 600px) {
+
+  .cart {
+    max-width: 400px;
+  }
+  .open {
+    animation: open 0.8s ease-in-out forwards;
+  }
+}
+
+@keyframes open {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 400px;
+  }
+}
+
+@keyframes openFull {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 100%;
+  }
+}

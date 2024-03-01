@@ -1,9 +1,20 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const Cart = () => {
+import './Cart.css'
+
+const Cart = ({openOrCloseCart, cartOpen}) => {
   return (
-    <div>Cart</div>
+  <aside className={ `cart ${cartOpen ? 'open' : 'closed'}`}>
+      <button onClick={openOrCloseCart}>X</button>
+      Cart
+    </aside>
   )
+}
+
+Cart.propTypes = {
+  openOrCloseCart: PropTypes.func.isRequired,
+  cartOpen: PropTypes.bool.isRequired
 }
 
 export default Cart
