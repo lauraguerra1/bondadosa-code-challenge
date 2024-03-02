@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { getItem, getMoreItems } from '../../utils/apiCalls';
-import './SearchResults.css'
+import './SearchResults.css';
 import brokenImg from '../../images/broken-img.png';
+import QuantityChanger from '../QuanityChanger/QuantityChanger.jsx';
 
-const SearchResults = ({ searchParams }) => {
+const SearchResults = ({ searchParams, cart, updateCart, changeQuantity }) => {
   const [searchResults, setSearchResults] = useState([]);
   const [nextApi, setNextApi] = useState('')
 
@@ -20,6 +21,7 @@ const SearchResults = ({ searchParams }) => {
   };
 
   useEffect(() => { 
+    setNextApi('');
     callAPI(getItem, (searchParams.get('q') || ''), 'new');
   }, [searchParams])
 
@@ -41,13 +43,27 @@ const SearchResults = ({ searchParams }) => {
 
   return (
     <section className='results-page'>
-    <p className='semi-bold'>Showing {uniqueResults.length} result{uniqueResults.length === 1 ? '' : 's'} for {searchParams.get('q') || ''} </p>
+    <p className='semi-bold'>Showing {uniqueResults.length} result{uniqueResults.length === 1 ? '' : 's'} for "{searchParams.get('q') || ''}"</p>
     <div className={`results ${uniqueResults.length % 2 === 0 ? 'even-length' : 'odd-length'} ${uniqueResults.length % 3 === 0 ? 'flush-thirds' : ''} ${uniqueResults.length % 3 === 1 ? 'single-remainder' : ''}`}>
-        {uniqueResults.map((item, index) => 
-          <div className={`single-result ${getOrder(index, uniqueResults.length)} ${index % 2 === 0 ? '' : 'odd'} ${index % 3 === 0 ? 'every-third' : ''}`} key={item.food.foodId}>
-            <img src={item.food.image || brokenImg} alt={item.food.label} />
-            <p className='semi-bold'>{item.food.label}</p>
-          </div>
+        {uniqueResults.map((item, index) => {
+          const itemInCart = cart.find(cartItem => cartItem.food.foodId === item.food.foodId);
+          return (
+            <div className={`single-result ${getOrder(index, uniqueResults.length)} ${index % 2 === 0 ? '' : 'odd'} ${index % 3 === 0 ? 'every-third' : ''}`} key={item.food.foodId}>
+              <img src={item.food.image || brokenImg} alt={item.food.label} />
+              <p className='semi-bold'>{item.food.label}</p>
+              {
+                !itemInCart ? 
+                  <button className='add-cart-btn' onClick={() => updateCart(item)}>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="icon">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+                    ADD <span className='extra'>TO CART</span>
+                  </button>
+                  : <QuantityChanger updateCart={updateCart}  changeQuantity={changeQuantity} itemInCart={itemInCart} />
+              }
+            </div>
+          )
+        }
         )}
       </div>
       {nextApi.length > 0 && <button className='view-more' onClick={() => callAPI(getMoreItems, nextApi, 'add')}>View More Items</button>}
@@ -56,7 +72,10 @@ const SearchResults = ({ searchParams }) => {
 }
 
 SearchResults.propTypes = {
-  searchParams: PropTypes.object.isRequired
+  searchParams: PropTypes.object.isRequired, 
+  cart: PropTypes.array.isRequired, 
+  updateCart: PropTypes.func.isRequired, 
+  changeQuantity: PropTypes.func.isRequired, 
 }
 
 export default SearchResults

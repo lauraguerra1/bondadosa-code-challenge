@@ -61,3 +61,17 @@ a {
   height: 25px;
   color: white;
 }
+
+.no-click {
+  pointer-events: none;
+  user-select: none;
+}
+
+.clear-btn {
+  background-color: #00000000;
+  border: none;
+
+  .icon {
+    color: black;
+  }
+}
