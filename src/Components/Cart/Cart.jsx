@@ -19,7 +19,7 @@ const Cart = ({ openOrCloseCart, cartOpen, cart, updateCart, changeQuantity, car
       <div className='cart-contents'>
         {cart.map(item => <CartItem key={item.food.foodId} changeQuantity={changeQuantity} updateCart={updateCart} item={item} />)}
       </div>
-      <button className='checkout-btn'>CHECHOUT {cartTotal} ITEMS</button>
+      <button className='checkout-btn'>CHECKOUT {cartTotal} ITEMS</button>
     </aside>
   )
 }
