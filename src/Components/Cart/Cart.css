@@ -32,7 +32,7 @@
 
 .checkout-btn {
   width: 90%; 
-  background-color: green;
+  background-color:rgb(135 189 130);
   color: white; 
   font-size: larger;
   border-radius: 25px;
@@ -40,6 +40,11 @@
   margin: 10px 5%;
   border: none;
   height: 35px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.checkout-btn:hover {
+  background-color: rgb(95, 158, 88)
 }
 
 

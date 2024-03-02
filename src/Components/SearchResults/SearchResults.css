@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: column;
   max-width: 2000px;
-  margin: 5vh 15%;
+  margin: 5%;
 }
 
 .single-result {
@@ -48,12 +48,13 @@
   padding: 5px 10px;
   font-size: medium;
   position: absolute;
-  top: 0.1; 
+  top: 0; 
   right: 0;
   overflow: hidden;
   height: 40px;
   width: 80px;
-  transition: width .6s ease-in-out, background-color .6s;
+  transition: width .2s ease-in-out, background-color .2s;
+  margin: 1%;
 
   &:hover {
     .extra {
@@ -81,6 +82,7 @@
   .results {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 2fr));
+    margin: 2vh 15%;
   }
 
   .odd {
@@ -104,6 +106,7 @@
   .results {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 2fr));
+    margin: 2vh 15%;
   }
 
   .single-result {

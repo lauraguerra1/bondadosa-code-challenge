@@ -43,7 +43,7 @@ const SearchResults = ({ searchParams, cart, updateCart, changeQuantity }) => {
 
   return (
     <section className='results-page'>
-    <p className='semi-bold'>Showing {uniqueResults.length} result{uniqueResults.length === 1 ? '' : 's'} for {searchParams.get('q') || ''} </p>
+    <p className='semi-bold'>Showing {uniqueResults.length} result{uniqueResults.length === 1 ? '' : 's'} for "{searchParams.get('q') || ''}"</p>
     <div className={`results ${uniqueResults.length % 2 === 0 ? 'even-length' : 'odd-length'} ${uniqueResults.length % 3 === 0 ? 'flush-thirds' : ''} ${uniqueResults.length % 3 === 1 ? 'single-remainder' : ''}`}>
         {uniqueResults.map((item, index) => {
           const itemInCart = cart.find(cartItem => cartItem.food.foodId === item.food.foodId);
