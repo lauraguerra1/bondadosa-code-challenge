@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const QuantityChanger = ({itemInCart, changeQuantity, updateCart}) => {
   return (
-    <div className='add-cart-btn change-cart-div' >
+    <div className='change-cart-div' >
       <button className='change-btn' onClick={(e) => {
         e.stopPropagation();
         itemInCart.quantity === 1 ? updateCart(itemInCart) : changeQuantity(itemInCart, itemInCart.quantity - 1);

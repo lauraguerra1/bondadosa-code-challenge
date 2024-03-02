@@ -1,9 +1,22 @@
 .change-cart-div {
+  display: flex;
   justify-content: space-between;
   align-items: center;
+  color: white;
+  background-color: rgb(135, 189, 130);
+  border: none;
+  border-radius: 20px;
+
+  font-size: medium;
+  position: absolute;
+  top: 0;
+  right: 0;
+  overflow: hidden;
   width: 150px;
   height: fit-content;
   padding: 0px;
+  transition: width .2s ease-in-out, background-color .2s;
+  margin: 1%;
 
   p {
     padding: 5px 10px;
