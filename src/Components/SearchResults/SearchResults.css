@@ -69,39 +69,6 @@
   background-color: rgb(95, 158, 88)
 }
 
-.change-cart-div {
-  justify-content: space-between;
-  align-items: center;
-  width: 150px;
-  height: fit-content;
-    padding: 0px;
-
-  p {
-    padding: 5px 10px;
-    margin:2.5px;
-  }
-}
-
-.change-cart-div:hover {
-  background: rgb(135, 189, 130);
-}
-
-.change-btn {
-  border: none;
-  padding: 0px; 
-  background-color: #00000000;
-  transition: background-color .25s;
-  width: 25%;
-  display: flex; 
-  align-items: center;
-  height: 40px;
-  padding-left: 5px;
-}
-
-.change-btn:hover {
-  background-color: rgb(95, 158, 88)
-}
-
 .view-more {
   justify-self: center;
   padding: 0.5rem 2rem;
