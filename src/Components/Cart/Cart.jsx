@@ -14,12 +14,12 @@ const Cart = ({ openOrCloseCart, cartOpen, cart, updateCart, changeQuantity, car
           </svg>
         </button>
         <p>Shopping Cart</p>
-        <p>{cartTotal} Items</p>
+        <p>{cartTotal} Item{cartTotal !== 1 ? 's' : ''}</p>
       </div>
       <div className='cart-contents'>
         {cart.map(item => <CartItem key={item.food.foodId} changeQuantity={changeQuantity} updateCart={updateCart} item={item} />)}
       </div>
-      <button className='checkout-btn'>CHECKOUT {cartTotal} ITEMS</button>
+      <button className='checkout-btn'>CHECKOUT {cartTotal} ITEM{cartTotal !== 1 ? 'S' : ''}</button>
     </aside>
   )
 }
