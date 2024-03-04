@@ -5,6 +5,7 @@ import './SearchResults.css';
 import brokenImg from '../../images/broken-img.png';
 import QuantityChanger from '../QuanityChanger/QuantityChanger.jsx';
 import Loading from '../Loading/Loading.jsx';
+import Error from '../Error/Error.jsx';
 
 const SearchResults = ({ searchParams, cart, updateCart, changeQuantity }) => {
   const [searchResults, setSearchResults] = useState([]);
@@ -17,7 +18,7 @@ const SearchResults = ({ searchParams, cart, updateCart, changeQuantity }) => {
     try {
       const data = await apiCall(argument);
       type === 'new' ? setSearchResults(data.hints) : setSearchResults(prev => [...prev, ...data.hints])
-      if (data["_links"].next.href) setNextApi(data["_links"].next.href);
+      if (data["_links"]?.next.href) setNextApi(data["_links"].next.href);
       setLoading(false);
     } catch (error) {
       setError(error);
@@ -29,6 +30,8 @@ const SearchResults = ({ searchParams, cart, updateCart, changeQuantity }) => {
   useEffect(() => { 
     setNextApi('');
     callAPI(getItem, (searchParams.get('q') || ''), 'new');
+
+    return () => setError(null)
   }, [searchParams])
 
   if (!searchParams.get('q')) {
@@ -48,7 +51,7 @@ const SearchResults = ({ searchParams, cart, updateCart, changeQuantity }) => {
   }, [])
 
   if (loading) return <Loading />
-  // if (error) return <Error error={error} />
+  if (error) return <Error errorStatus={error.message} />
 
   return (
     <section className='results-page'>

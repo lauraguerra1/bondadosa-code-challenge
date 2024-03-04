@@ -83,3 +83,9 @@ a {
 .flex {
   display: flex;
 }
+
+.error-msg {
+  color: red;
+  font-weight: 600;
+  margin: 50px 20px;
+}
