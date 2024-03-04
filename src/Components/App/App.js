@@ -1,6 +1,6 @@
 import './App.css';
 import { useEffect, useState } from 'react';
-import { Routes, Route, Link, useSearchParams, useLocation } from 'react-router-dom';
+import { Routes, Route, Link, useSearchParams, useLocation, useNavigate } from 'react-router-dom';
 import Home from '../Home/Home';
 import Cart from '../Cart/Cart';
 import SearchBar from '../SearchBar/SearchBar';
@@ -9,6 +9,7 @@ import Order from '../Order/Order';
 import Confirmation from '../Confirmation/Confirmation';
 
 function App() {
+  const navigate = useNavigate();
   const location = useLocation();
   const [cart, setCart] = useState([]);
   const [cartTotal, setCartTotal] = useState(0);
@@ -29,6 +30,8 @@ function App() {
     if (!location.pathname.includes('search')) {
       setSearchTerm('');
     }
+
+    if (location.pathname === '/order') navigate('/');
   }, [location.pathname]);
 
   const openOrCloseCart = (setting = null) => {
