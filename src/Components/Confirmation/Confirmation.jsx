@@ -11,7 +11,6 @@ const Confirmation = () => {
 
   useEffect(() => {
     setPurchasedOrder(JSON.parse(localStorage.getItem(orderId)) || null);
-    console.log('purchased order',JSON.parse(localStorage.getItem(orderId)) )
     setLoading(false);
   }, []);
 

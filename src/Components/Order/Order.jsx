@@ -1,12 +1,22 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types';
 import './Order.css'
 import { useNavigate, useParams } from 'react-router-dom';
 import CartItem from '../CartItem/CartItem';
 
-const Order = ({ openOrCloseCart, cart, cartTotal, clearCart }) => {
+const Order = ({ openOrCloseCart, cart, cartTotal, clearCart, endOrder, orderID }) => {
   const { orderId } = useParams();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const orderPlaced = localStorage.getItem(orderId);
+    if (orderPlaced) {
+      navigate(`/order/${orderId}/confirmation`);
+    } else if (orderID !== orderId) {
+      navigate('/');
+    }
+
+  }, [orderId])
 
   const [order, setOrder] = useState({
     orderId,
@@ -78,8 +88,10 @@ const Order = ({ openOrCloseCart, cart, cartTotal, clearCart }) => {
 Order.propTypes = {
   cartTotal: PropTypes.number.isRequired,
   openOrCloseCart: PropTypes.func.isRequired,
+  endOrder: PropTypes.func.isRequired,
   clearCart: PropTypes.func.isRequired,
-  cart: PropTypes.array.isRequired
+  cart: PropTypes.array.isRequired,
+  orderID: PropTypes.string.isRequired
 }
 
 export default Order

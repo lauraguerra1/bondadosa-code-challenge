@@ -11,6 +11,7 @@ import Confirmation from '../Confirmation/Confirmation';
 function App() {
   const navigate = useNavigate();
   const location = useLocation();
+  const [orderId, setOrderId] = useState('');
   const [cart, setCart] = useState([]);
   const [cartTotal, setCartTotal] = useState(0);
   const [cartOpen, setCartOpen] = useState(false);
@@ -66,6 +67,9 @@ function App() {
     setSearchTerm('');
   };
 
+  const startOrder = (orderId) => setOrderId(orderId);
+  const endOrder = () => setOrderId('');
+
   return (
     <div className='app'>
       <header className={cartOpen ? 'cart-open' : ''}>
@@ -92,11 +96,11 @@ function App() {
           <Routes>
             <Route path='/' element={<Home clearSearch={clearSearch} />} />
             <Route path='/search' element={<SearchResults searchParams={searchParams} cart={cart} updateCart={updateCart} changeQuantity={changeQuantity} />} />
-            <Route path='/order/:orderId' element={<Order cart={cart} openOrCloseCart={openOrCloseCart} cartTotal={cartTotal} clearCart={clearCart} />} />
+            <Route path='/order/:orderId' element={<Order orderID={orderId} endOrder={endOrder} cart={cart} openOrCloseCart={openOrCloseCart} cartTotal={cartTotal} clearCart={clearCart} />} />
             <Route path='/order/:orderId/confirmation' element={<Confirmation />} />
           </Routes>
         </div>
-        <Cart openOrCloseCart={openOrCloseCart} cartOpen={cartOpen} cart={cart} updateCart={updateCart} changeQuantity={changeQuantity} cartTotal={cartTotal} />
+        <Cart startOrder={startOrder} openOrCloseCart={openOrCloseCart} cartOpen={cartOpen} cart={cart} updateCart={updateCart} changeQuantity={changeQuantity} cartTotal={cartTotal} />
       </main>
     </div>
   );

@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { useLocation, useNavigate } from 'react-router-dom';
 import emptyCart from '../../images/empty-cart.png'
 
-const Cart = ({ openOrCloseCart, cartOpen, cart, updateCart, changeQuantity, cartTotal }) => {
+const Cart = ({ openOrCloseCart, cartOpen, cart, updateCart, changeQuantity, cartTotal, startOrder }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -17,6 +17,7 @@ const Cart = ({ openOrCloseCart, cartOpen, cart, updateCart, changeQuantity, car
 
   const generateOrder = () => {
     const orderId = uuidv4();
+    startOrder(orderId)
     navigate(`/order/${orderId}`);
     openOrCloseCart(false);
   }
@@ -56,7 +57,8 @@ Cart.propTypes = {
   changeQuantity: PropTypes.func.isRequired,
   cartOpen: PropTypes.bool.isRequired,
   cart: PropTypes.array.isRequired, 
-  cartTotal: PropTypes.number.isRequired
+  cartTotal: PropTypes.number.isRequired,
+  startOrder: PropTypes.func.isRequired,
 }
 
 export default Cart
