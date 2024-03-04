@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import './Confirmation.css'
 import CartItem from '../CartItem/CartItem';
 import Loading from '../Loading/Loading';
+import NotFound from '../NotFound.jsx/NotFound';
 
 const Confirmation = () => {
   const { orderId } = useParams();
@@ -44,7 +45,7 @@ const Confirmation = () => {
             </div>
           </div>
         </div>
-        : <p>We couldnt find that order </p>
+        : <NotFound orderId={orderId} />
       }
     </div>
   )

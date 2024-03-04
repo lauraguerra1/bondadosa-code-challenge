@@ -44,6 +44,10 @@ a {
   font-style: italic;
 }
 
+.normal {
+  font-weight: 400;
+}
+
 .semi-bold {
   font-weight: 500;
 }
