@@ -8,6 +8,7 @@ import SearchResults from '../SearchResults/SearchResults';
 import Order from '../Order/Order';
 import Confirmation from '../Confirmation/Confirmation';
 import NotFound from '../NotFound.jsx/NotFound';
+import logo from '../../images/logo.png';
 
 function App() {
   const location = useLocation();
@@ -72,7 +73,7 @@ function App() {
     <div className='app'>
       <header className={cartOpen ? 'cart-open' : ''}>
         <Link to='/' id='title'>
-          VIRTUAL GROCER
+          <img src={logo} alt='virtual grocer logo' />
         </Link>
         <nav>
           <SearchBar className={'search-form'} searchTerm={searchTerm} updateSearchTerm={updateSearchTerm} updateSearchParam={updateSearchParam} />
