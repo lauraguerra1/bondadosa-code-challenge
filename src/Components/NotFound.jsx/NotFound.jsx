@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import noResults from '../../images/no-results.png';
 import './NotFound.css'
 
-const NotFound = ({searchTerm, orderId}) => {
+const NotFound = ({ searchTerm, orderId }) => {
+  useEffect(() => {
+    document.title = '404 | Virtual Grocer'
+    return () => document.title = 'Virtual Grocer'
+  }, []);
+  
   return (
     <div className='no-results'>
       {!searchTerm && !orderId
