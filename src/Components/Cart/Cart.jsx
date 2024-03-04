@@ -15,8 +15,8 @@ const Cart = ({ openOrCloseCart, cartOpen, cart, updateCart, changeQuantity, car
   }
 
   const generateOrder = () => {
-    const orderNumber = uuidv4();
-    navigate(`/order/${orderNumber}`);
+    const orderId = uuidv4();
+    navigate(`/order/${orderId}`);
     openOrCloseCart(false);
   }
 

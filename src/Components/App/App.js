@@ -5,6 +5,7 @@ import Home from '../Home/Home';
 import Cart from '../Cart/Cart';
 import SearchBar from '../SearchBar/SearchBar';
 import SearchResults from '../SearchResults/SearchResults';
+import Order from '../Order/Order';
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -78,7 +79,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Home clearSearch={clearSearch} />} />
             <Route path='/search' element={<SearchResults searchParams={searchParams} cart={cart} updateCart={updateCart} changeQuantity={changeQuantity} />} />
-            <Route path='/order/:orderNumber' element={<div>order page </div>} />
+            <Route path='/order/:orderId' element={<Order cart={cart} openOrCloseCart={openOrCloseCart} />} />
           </Routes>
         </div>
         <Cart openOrCloseCart={openOrCloseCart} cartOpen={cartOpen} cart={cart} updateCart={updateCart} changeQuantity={changeQuantity} cartTotal={cartTotal} />
