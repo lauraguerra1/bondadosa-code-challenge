@@ -15,12 +15,13 @@ const SearchResults = ({ searchParams, cart, updateCart, changeQuantity }) => {
   const [error, setError] = useState(null);
 
   const callAPI = async (apiCall, argument, type) => {
-    setLoading(true);
+    if (type !== 'add') setLoading(true);
     try {
       const data = await apiCall(argument);
       type === 'new' ? setSearchResults(data.hints) : setSearchResults(prev => [...prev, ...data.hints])
+      console.log('data', data["_links"]?.next.href)
       if (data["_links"]?.next.href) setNextApi(data["_links"].next.href);
-      setLoading(false);
+      if (type !== 'add') setLoading(false);
     } catch (error) {
       setError(error);
       setSearchResults([])
