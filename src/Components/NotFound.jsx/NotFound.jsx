@@ -8,7 +8,7 @@ const NotFound = ({ searchTerm, orderId }) => {
     document.title = '404 | Virtual Grocer'
     return () => document.title = 'Virtual Grocer'
   }, []);
-  
+
   return (
     <div className='no-results'>
       {!searchTerm && !orderId
@@ -22,7 +22,7 @@ const NotFound = ({ searchTerm, orderId }) => {
           ? <p className='semi-bold'>Sorry, no results were found for "{searchTerm}"</p>
           : <p className='semi-bold'>Sorry, we couldn't find any order number matching "{orderId}". <span className='italic normal'>Search for an item and add it to your cart to start an order!</span></p>
       }
-      {searchTerm || orderId && <img className='no-results-img' src={noResults} alt='no results found' />}
+      {(searchTerm.length > 0 || orderId.length > 0) && <img className='no-results-img' src={noResults} alt='no results found' />}
     </div>
   )
 }
