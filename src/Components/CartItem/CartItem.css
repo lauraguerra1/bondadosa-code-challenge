@@ -33,6 +33,15 @@
 }
 
 .item-count {
-  border: 1px solid black;
+  border: 1px solid white;
   border-radius: 5px;
+  background-color: rgb(135 189 130);
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  min-width: 40px;
+}
+
+.item-count:hover {
+  background-color: rgb(95, 158, 88)
 }

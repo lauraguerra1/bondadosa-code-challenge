@@ -79,7 +79,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Home clearSearch={clearSearch} />} />
             <Route path='/search' element={<SearchResults searchParams={searchParams} cart={cart} updateCart={updateCart} changeQuantity={changeQuantity} />} />
-            <Route path='/order/:orderId' element={<Order cart={cart} openOrCloseCart={openOrCloseCart} />} />
+            <Route path='/order/:orderId' element={<Order cart={cart} openOrCloseCart={openOrCloseCart} cartTotal={cartTotal} />} />
           </Routes>
         </div>
         <Cart openOrCloseCart={openOrCloseCart} cartOpen={cartOpen} cart={cart} updateCart={updateCart} changeQuantity={changeQuantity} cartTotal={cartTotal} />
