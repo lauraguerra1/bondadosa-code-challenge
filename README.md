@@ -55,7 +55,19 @@ https://github.com/lauraguerra1/bondadosa-code-challenge/assets/121131581/df84d6
 - Fork [this](https://github.com/lauraguerra1/bondadosa-code-challenge) repository. 
 - Clone it to your local machine using the command: `git clone git@github.com:lauraguerra1/bondadosa-code-challenge.git`.
 - Run the command: `cd bondadosa-code-challenge`
+- Open the project with the command `code .`
+- Add a `.env` file to the root of the project, and create environment variables for `REACT_APP_KEY` and `REACT_APP_ID`. (Further instructions below)
 - Run the command: `npm install`
 - Run the command: `npm start`
 - Once the app has finished compiling, enter `http://localhost:3000/` into your browser to see the live web page.
+
+### Environment Variables
+To get the necessary environment variables, follow these steps: 
+- Step 1: Sign up for a free DEVELOPER account for the Food Database API here
+- Step 2: Be sure to select the Developer plan for the Food Database API in the Choose your plan drop down menu.
+- Step 3: You will be asked to provide an organization during the sign-up process. Please enter your name for the organization or your own personal organization name/identifier if you have one (this is to ensure that you can make use of the free Developer plan).
+- Step 4: Once your account is fully set up, you will be able to set up an Application here, which is where you will be able to find your Application ID and Application Keys, both of which you will need to make GET requests (you're welcome to name your application whatever you'd like to call it).
+
+  
+If you need assistance or would like to use my credentials, please email l.garciaguerra1@gmail.
 
