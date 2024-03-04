@@ -89,3 +89,9 @@ a {
   font-weight: 600;
   margin: 50px 20px;
 }
+
+.no-results-img {
+  margin: 0 auto;
+  width: 250px;
+  max-width: 100%;
+}
