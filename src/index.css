@@ -44,6 +44,10 @@ a {
   font-style: italic;
 }
 
+.normal {
+  font-weight: 400;
+}
+
 .semi-bold {
   font-weight: 500;
 }
@@ -82,4 +86,16 @@ a {
 
 .flex {
   display: flex;
+}
+
+.error-msg {
+  color: red;
+  font-weight: 600;
+  margin: 50px 20px;
+}
+
+.no-results-img {
+  margin: 0 auto;
+  width: 250px;
+  max-width: 100%;
 }

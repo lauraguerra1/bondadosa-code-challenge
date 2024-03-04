@@ -1,0 +1,19 @@
+.loading {
+  width: 150px;
+  height: 150px;
+  margin: 20vh calc(50vw - 75px);
+  border-radius: 100%;
+  border: 2px solid rgb(203, 201, 201);
+  border-top: 2px solid gray;
+  animation: spin 0.5s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

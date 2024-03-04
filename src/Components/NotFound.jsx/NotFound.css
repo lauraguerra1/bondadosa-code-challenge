@@ -1,0 +1,10 @@
+.no-results {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+
+  p, h2 {
+    align-self: start;
+  }
+}

@@ -4,6 +4,10 @@
   grid-template-rows: repeat(2);
 }
 
+.search-placeholder {
+  display: inline-block;
+}
+
 .results {
   display: flex;
   flex-direction: column;

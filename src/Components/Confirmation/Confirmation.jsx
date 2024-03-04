@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import './Confirmation.css'
 import CartItem from '../CartItem/CartItem';
+import Loading from '../Loading/Loading';
+import NotFound from '../NotFound.jsx/NotFound';
 
 const Confirmation = () => {
   const { orderId } = useParams();
@@ -10,13 +12,12 @@ const Confirmation = () => {
 
   useEffect(() => {
     setPurchasedOrder(JSON.parse(localStorage.getItem(orderId)) || null);
-    console.log('purchased order',JSON.parse(localStorage.getItem(orderId)) )
     setLoading(false);
   }, []);
 
   return (
     <div>
-      {loading ? <p>loading...</p> : purchasedOrder ? 
+      {loading ? <Loading /> : purchasedOrder ? 
         <div className='confirmation'>
           <div>
             <h2 className='semi-bold'>Thank you for your order!</h2>
@@ -44,7 +45,7 @@ const Confirmation = () => {
             </div>
           </div>
         </div>
-        : <p>We couldnt find that order </p>
+        : <NotFound orderId={orderId} />
       }
     </div>
   )

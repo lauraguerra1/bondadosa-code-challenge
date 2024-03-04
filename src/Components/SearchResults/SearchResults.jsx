@@ -4,29 +4,39 @@ import { getItem, getMoreItems } from '../../utils/apiCalls';
 import './SearchResults.css';
 import brokenImg from '../../images/broken-img.png';
 import QuantityChanger from '../QuanityChanger/QuantityChanger.jsx';
+import Loading from '../Loading/Loading.jsx';
+import Error from '../Error/Error.jsx';
+import NotFound from '../NotFound.jsx/NotFound.jsx';
 
 const SearchResults = ({ searchParams, cart, updateCart, changeQuantity }) => {
   const [searchResults, setSearchResults] = useState([]);
-  const [nextApi, setNextApi] = useState('')
+  const [nextApi, setNextApi] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const callAPI = async (apiCall, argument, type) => {
+    setLoading(true);
     try {
       const data = await apiCall(argument);
       type === 'new' ? setSearchResults(data.hints) : setSearchResults(prev => [...prev, ...data.hints])
-      if(data["_links"].next.href) setNextApi(data["_links"].next.href)
+      if (data["_links"]?.next.href) setNextApi(data["_links"].next.href);
+      setLoading(false);
     } catch (error) {
-      console.log(error);
+      setError(error);
       setSearchResults([])
+      setLoading(false);
     }
   };
 
   useEffect(() => { 
     setNextApi('');
     callAPI(getItem, (searchParams.get('q') || ''), 'new');
+
+    return () => setError(null)
   }, [searchParams])
 
   if (!searchParams.get('q')) {
-    return <p className='results-page'>search for something</p>
+    return <p className='results-page search-placeholder'>Search for something! Try things like <span className='italic'>"pizza"</span>, <span className='italic'>"coffee"</span>, or <span className='italic'>"almond milk"</span>.</p>
   }
 
   const getOrder = (index, parentLength) => {
@@ -41,10 +51,14 @@ const SearchResults = ({ searchParams, cart, updateCart, changeQuantity }) => {
     return acc;
   }, [])
 
+  if (loading) return <Loading />
+  if (error) return <Error errorStatus={error.message} />
+  if (!uniqueResults.length) return <NotFound searchTerm={searchParams.get('q')} />
+
   return (
     <section className='results-page'>
-    <p className='semi-bold'>Showing {uniqueResults.length} result{uniqueResults.length === 1 ? '' : 's'} for "{searchParams.get('q') || ''}"</p>
-    <div className={`results ${uniqueResults.length % 2 === 0 ? 'even-length' : 'odd-length'} ${uniqueResults.length % 3 === 0 ? 'flush-thirds' : ''} ${uniqueResults.length % 3 === 1 ? 'single-remainder' : ''}`}>
+      <p className='semi-bold'>Showing {uniqueResults.length} result{uniqueResults.length === 1 ? '' : 's'} for "{searchParams.get('q') || ''}"</p>
+      <div className={`results ${uniqueResults.length % 2 === 0 ? 'even-length' : 'odd-length'} ${uniqueResults.length % 3 === 0 ? 'flush-thirds' : ''} ${uniqueResults.length % 3 === 1 ? 'single-remainder' : ''}`}>
         {uniqueResults.map((item, index) => {
           const itemInCart = cart.find(cartItem => cartItem.food.foodId === item.food.foodId);
           return (
@@ -53,7 +67,7 @@ const SearchResults = ({ searchParams, cart, updateCart, changeQuantity }) => {
               <p className='semi-bold'>{item.food.label}</p>
               {
                 !itemInCart ? 
-                  <button className='add-cart-btn' onClick={() => updateCart(item)}>
+                <button className='add-cart-btn' onClick={() => updateCart(item)}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="icon">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                     </svg>
