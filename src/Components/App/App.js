@@ -1,13 +1,15 @@
 import './App.css';
 import { useEffect, useState } from 'react';
-import { Routes, Route, Link, useSearchParams } from 'react-router-dom';
+import { Routes, Route, Link, useSearchParams, useLocation } from 'react-router-dom';
 import Home from '../Home/Home';
 import Cart from '../Cart/Cart';
 import SearchBar from '../SearchBar/SearchBar';
 import SearchResults from '../SearchResults/SearchResults';
 import Order from '../Order/Order';
+import Confirmation from '../Confirmation/Confirmation';
 
 function App() {
+  const location = useLocation();
   const [cart, setCart] = useState([]);
   const [cartTotal, setCartTotal] = useState(0);
   const [cartOpen, setCartOpen] = useState(false);
@@ -22,6 +24,12 @@ function App() {
       }, 0)
     );
   }, [cart]);
+
+  useEffect(() => {
+    if (!location.pathname.includes('search')) {
+      setSearchTerm('');
+    }
+  }, [location.pathname]);
 
   const openOrCloseCart = (setting = null) => {
     setting === true || setting === false ? setCartOpen(setting) : setCartOpen((prev) => !prev);
@@ -45,6 +53,8 @@ function App() {
       })
     );
   };
+
+  const clearCart = () => setCart([]);
 
   const updateSearchTerm = (value) => setSearchTerm(value);
   const updateSearchParam = (value) => setSearchParams(value);
@@ -79,7 +89,8 @@ function App() {
           <Routes>
             <Route path='/' element={<Home clearSearch={clearSearch} />} />
             <Route path='/search' element={<SearchResults searchParams={searchParams} cart={cart} updateCart={updateCart} changeQuantity={changeQuantity} />} />
-            <Route path='/order/:orderId' element={<Order cart={cart} openOrCloseCart={openOrCloseCart} cartTotal={cartTotal} />} />
+            <Route path='/order/:orderId' element={<Order cart={cart} openOrCloseCart={openOrCloseCart} cartTotal={cartTotal} clearCart={clearCart} />} />
+            <Route path='/order/:orderId/confirmation' element={<Confirmation />} />
           </Routes>
         </div>
         <Cart openOrCloseCart={openOrCloseCart} cartOpen={cartOpen} cart={cart} updateCart={updateCart} changeQuantity={changeQuantity} cartTotal={cartTotal} />
