@@ -2,8 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Cart.css'
 import CartItem from '../CartItem/CartItem';
+import { v4 as uuidv4 } from 'uuid';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Cart = ({ openOrCloseCart, cartOpen, cart, updateCart, changeQuantity, cartTotal }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const continueShopping = () => {
+    navigate('/search');
+    openOrCloseCart(false);
+  }
+
+  const generateOrder = () => {
+    const orderId = uuidv4();
+    navigate(`/order/${orderId}`);
+    openOrCloseCart(false);
+  }
 
   return (
     <aside className={`cart ${cartOpen ? 'open' : 'closed'}`}>
@@ -14,12 +29,16 @@ const Cart = ({ openOrCloseCart, cartOpen, cart, updateCart, changeQuantity, car
           </svg>
         </button>
         <p>Shopping Cart</p>
-        <p>{cartTotal} Items</p>
+        <p>{cartTotal} Item{cartTotal !== 1 ? 's' : ''}</p>
       </div>
       <div className='cart-contents'>
         {cart.map(item => <CartItem key={item.food.foodId} changeQuantity={changeQuantity} updateCart={updateCart} item={item} />)}
       </div>
-      <button className='checkout-btn'>CHECKOUT {cartTotal} ITEMS</button>
+      {
+        location.pathname.includes('order')
+          ? <button onClick={continueShopping} className='checkout-btn'>Continue Shopping</button>
+          : <button onClick={generateOrder} className='checkout-btn'>CHECKOUT {cartTotal} ITEM{cartTotal !== 1 ? 'S' : ''}</button>
+      }
     </aside>
   )
 }
