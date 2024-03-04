@@ -19,7 +19,6 @@ const SearchResults = ({ searchParams, cart, updateCart, changeQuantity }) => {
     try {
       const data = await apiCall(argument);
       type === 'new' ? setSearchResults(data.hints) : setSearchResults(prev => [...prev, ...data.hints])
-      console.log('data', data["_links"]?.next.href)
       if (data["_links"]?.next.href) setNextApi(data["_links"].next.href);
       if (type !== 'add') setLoading(false);
     } catch (error) {

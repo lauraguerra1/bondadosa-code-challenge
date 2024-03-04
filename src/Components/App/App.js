@@ -51,7 +51,6 @@ function App() {
   const changeQuantity = (item, quantity) => {
     setCart((prev) =>
       prev.map((cartItem) => {
-        console.log('cartItem', cartItem);
         return cartItem.food.foodId === item.food.foodId ? { ...cartItem, quantity } : cartItem;
       })
     );
