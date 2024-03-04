@@ -22,9 +22,8 @@ function App() {
     );
   }, [cart]);
 
-  const openOrCloseCart = () => {
-    console.log('hello');
-    setCartOpen((prev) => !prev);
+  const openOrCloseCart = (setting = null) => {
+    setting === true || setting === false ? setCartOpen(setting) : setCartOpen((prev) => !prev);
   };
 
   const updateCart = (newItem) => {
@@ -79,6 +78,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Home clearSearch={clearSearch} />} />
             <Route path='/search' element={<SearchResults searchParams={searchParams} cart={cart} updateCart={updateCart} changeQuantity={changeQuantity} />} />
+            <Route path='/order/:orderNumber' element={<div>order page </div>} />
           </Routes>
         </div>
         <Cart openOrCloseCart={openOrCloseCart} cartOpen={cartOpen} cart={cart} updateCart={updateCart} changeQuantity={changeQuantity} cartTotal={cartTotal} />
