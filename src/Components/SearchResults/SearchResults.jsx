@@ -36,7 +36,7 @@ const SearchResults = ({ searchParams, cart, updateCart, changeQuantity }) => {
   }, [searchParams])
 
   if (!searchParams.get('q')) {
-    return <p className='results-page'>search for something</p>
+    return <p className='results-page search-placeholder'>Search for something! Try things like <span className='italic'>"pizza"</span>, <span className='italic'>"coffee"</span>, or <span className='italic'>"almond milk"</span>.</p>
   }
 
   const getOrder = (index, parentLength) => {
