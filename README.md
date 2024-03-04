@@ -31,7 +31,8 @@ This is a virtual grocery store that fetches information from the Edamam Food Da
 
 
 
-https://github.com/lauraguerra1/bondadosa-code-challenge/assets/121131581/89de7cd6-3737-42be-875b-d472688c84a0
+https://github.com/lauraguerra1/bondadosa-code-challenge/assets/121131581/df84d686-d243-474b-909f-e82978d605a1
+
 
 
 
