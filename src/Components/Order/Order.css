@@ -14,16 +14,86 @@
     margin: 0px;
   }
 }
+
 .section-title {
   border-bottom: 1px solid rgb(178, 177, 177);
   color: rgb(178, 177, 177);
+  padding-bottom: 1px;
+  margin: 10px 0px!important;
+  grid-column: span 2 / span 2;
+}
+
+.order form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  align-items: start;
+  height: 415px;
+}
+
+.form-element {
+  display: flex; 
+  flex-direction: column;
+  grid-column: span 2 / span 2;
+
+  input, select {
+    border: 1px solid rgb(191, 189, 189); 
+    border-radius: 2px;
+    padding: 0.5rem;
+  }
+
+  label {
+    color: rgb(68, 65, 65);
+  }
+}
+
+#zipCodeContainer, #stateContainer {
+  grid-column: span 1 / span 1;
+}
+
+.cart-summary {
+  max-height: 200px;
+  overflow-y: auto;
+  margin-bottom: 30px;
+}
+
+.cart-total {
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(178, 177, 177); 
+  color: rgb(68, 65, 65);
+  margin-top:25px;
+  margin-left: 5px;
+
+  p {
+    margin: 0px;
+  }
+}
+
+.purchase-btn {
+  background-color: rgb(135 189 130);
+  color: white;
+  border: none;
+  border-radius: 2px;
+  padding: 5px;
+  margin: 5px 0px;
+  align-items: center;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.purchase-btn:hover {
+  background-color: rgb(95, 158, 88)
 }
 
 @media screen and (min-width: 600px){
   .order {
     display: grid; 
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 2%;
+    gap: 1.5rem;
+  }
+
+  .cart-summary {
+    max-height: 418px;
+    margin-bottom: 0px;
   }
 }
 
