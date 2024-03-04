@@ -1,0 +1,25 @@
+.confirmation {
+  padding: 10px;
+  max-width: 600px;
+  margin: 0px auto;
+
+  p {
+    margin: 5px;
+  }
+}
+
+.order-details {
+  border: 1px solid rgb(202, 199, 199);
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.info {
+  grid-column: span 2 / span 2;
+  font-weight: 500;
+}
+
+.info :nth-child(2) {
+  font-weight: 400;
+}

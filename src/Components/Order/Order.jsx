@@ -11,6 +11,7 @@ const Order = ({ openOrCloseCart, cart, cartTotal, clearCart }) => {
   const [order, setOrder] = useState({
     orderId,
     cart: cart,
+    total: cartTotal,
     name: '',
     address: '',
     city: '',
@@ -36,12 +37,12 @@ const Order = ({ openOrCloseCart, cart, cartTotal, clearCart }) => {
       <div className='order'> 
         <form onSubmit={purchaseOrder} >
           {Object.keys(order).reduce((elements, name, i) => {
-            if (!i) elements.push(<h3 key='shipping-title' className='text-lg font-semibold section-title'>SHIPPING DETAILS</h3>)
-            if (name === 'payment') elements.push(<h3 key='payment-title' className='text-lg font-semibold section-title'>PAYMENT DETAILS</h3>)
-            if (name !== 'orderId' && name !== 'cart') {
+            if (!i) elements.push(<h3 key='shipping-title' className='text-lg semi-bold section-title'>SHIPPING DETAILS</h3>)
+            if (name === 'payment') elements.push(<h3 key='payment-title' className='text-lg semi-bold section-title'>PAYMENT DETAILS</h3>)
+            if (['orderId', 'cart', 'total'].every(title => name !== title)) {
               elements.push(
                 <div key={`${name}FormElement`} id={`${name}Container`} className='form-element'>
-                  <label className='font-semibold text-sm' htmlFor={name}>{name === 'zipCode' ? 'ZIP CODE' : name === 'address' ? 'STREET ADDRESS' : name === 'payment' ? 'PAYMENT TYPE' : name.toUpperCase()}</label> 
+                  <label className='semi-bold text-sm' htmlFor={name}>{name === 'zipCode' ? 'ZIP CODE' : name === 'address' ? 'STREET ADDRESS' : name === 'payment' ? 'PAYMENT TYPE' : name.toUpperCase()}</label> 
                   {name !== 'payment'
                     ? <input id={name} type='text' name={name} onChange={handleChange} value={order[name]} required />
                     : <select id={name} name={name} onChange={handleChange} value={order[name]} required>
@@ -55,12 +56,12 @@ const Order = ({ openOrCloseCart, cart, cartTotal, clearCart }) => {
             }
             return elements
           }, [])}
-          <button className='form-element purchase-btn text-lg font-semibold'>PURCHASE ITEMS</button>
+          <button className='form-element purchase-btn text-lg semi-bold'>PURCHASE ITEMS</button>
         </form>
         <div className='order-info'>
           <div className='flex section-title'>
-            <h3 className='text-lg font-semibold'>YOUR ORDER</h3>
-            <button className='text-sm font-semibold clear-btn' onClick={() => openOrCloseCart(true)}>EDIT CART</button>
+            <h3 className='text-lg semi-bold'>YOUR ORDER</h3>
+            <button className='text-sm semi-bold clear-btn' onClick={() => openOrCloseCart(true)}>EDIT CART</button>
           </div>
           <div className='cart-summary'>
             {cart.map(item => <CartItem key={item.food.foodId} item={item} />)}
