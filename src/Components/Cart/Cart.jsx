@@ -4,6 +4,7 @@ import './Cart.css'
 import CartItem from '../CartItem/CartItem';
 import { v4 as uuidv4 } from 'uuid';
 import { useLocation, useNavigate } from 'react-router-dom';
+import emptyCart from '../../images/empty-cart.png'
 
 const Cart = ({ openOrCloseCart, cartOpen, cart, updateCart, changeQuantity, cartTotal }) => {
   const navigate = useNavigate();
@@ -32,10 +33,16 @@ const Cart = ({ openOrCloseCart, cartOpen, cart, updateCart, changeQuantity, car
         <p>{cartTotal} Item{cartTotal !== 1 ? 's' : ''}</p>
       </div>
       <div className='cart-contents'>
-        {cart.map(item => <CartItem key={item.food.foodId} changeQuantity={changeQuantity} updateCart={updateCart} item={item} />)}
+        {cartTotal > 0
+          ? cart.map(item => <CartItem key={item.food.foodId} changeQuantity={changeQuantity} updateCart={updateCart} item={item} />)
+          : <div className='empty-cart'>
+              <img className='no-results-img' src={emptyCart} alt='no items in cart' />
+              <p>No items in your cart! Add items to see them here!</p>
+            </div>
+        }
       </div>
       {
-        location.pathname.includes('order')
+        location.pathname.includes('order') || !cartTotal
           ? <button onClick={continueShopping} className='checkout-btn'>Continue Shopping</button>
           : <button onClick={generateOrder} className='checkout-btn'>CHECKOUT {cartTotal} ITEM{cartTotal !== 1 ? 'S' : ''}</button>
       }
