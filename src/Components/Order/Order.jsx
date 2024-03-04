@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types';
 import './Order.css'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import CartItem from '../CartItem/CartItem';
 
-const Order = ({ openOrCloseCart, cart, cartTotal }) => {
+const Order = ({ openOrCloseCart, cart, cartTotal, clearCart }) => {
+  const { orderId } = useParams();
+  const navigate = useNavigate();
 
   const [order, setOrder] = useState({
-    orderId: useParams().orderId,
+    orderId,
     cart: cart,
     name: '',
     address: '',
@@ -20,17 +22,25 @@ const Order = ({ openOrCloseCart, cart, cartTotal }) => {
   const handleChange = (e) => {
     setOrder(prev => ({...prev, [e.target.name]: e.target.value}))
   }
+
+  const purchaseOrder = (e) => {
+    e.preventDefault();
+    localStorage.setItem(orderId, JSON.stringify(order));
+    navigate(`/order/${orderId}/confirmation`);
+    clearCart();
+  }
+
   return (
     <div className='order-page'>
       <h2>Checkout</h2>
       <div className='order'> 
-        <form>
+        <form onSubmit={purchaseOrder} >
           {Object.keys(order).reduce((elements, name, i) => {
-            if (!i) elements.push(<h3 className='text-lg font-semibold section-title'>SHIPPING DETAILS</h3>)
+            if (!i) elements.push(<h3 key='shipping-title' className='text-lg font-semibold section-title'>SHIPPING DETAILS</h3>)
+            if (name === 'payment') elements.push(<h3 key='payment-title' className='text-lg font-semibold section-title'>PAYMENT DETAILS</h3>)
             if (name !== 'orderId' && name !== 'cart') {
-              if (name === 'payment') elements.push(<h3 className='text-lg font-semibold section-title'>PAYMENT DETAILS</h3>)
               elements.push(
-                <div id={`${name}Container`} className='form-element'>
+                <div key={`${name}FormElement`} id={`${name}Container`} className='form-element'>
                   <label className='font-semibold text-sm' htmlFor={name}>{name === 'zipCode' ? 'ZIP CODE' : name === 'address' ? 'STREET ADDRESS' : name === 'payment' ? 'PAYMENT TYPE' : name.toUpperCase()}</label> 
                   {name !== 'payment'
                     ? <input id={name} type='text' name={name} onChange={handleChange} value={order[name]} required />
@@ -67,6 +77,7 @@ const Order = ({ openOrCloseCart, cart, cartTotal }) => {
 Order.propTypes = {
   cartTotal: PropTypes.number.isRequired,
   openOrCloseCart: PropTypes.func.isRequired,
+  clearCart: PropTypes.func.isRequired,
   cart: PropTypes.array.isRequired
 }
 
