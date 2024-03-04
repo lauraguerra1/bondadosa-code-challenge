@@ -1,70 +1,57 @@
-# Getting Started with Create React App
+<div align="center">
+<h1> BONDADOSA CODE CHALLANGE </h1>
+Shop all your grocery needs online.
+  <br>
+  
+[VIEW THE DEPLOYED SITE HERE](https://bondadosa-code-challenge.vercel.app/)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<br>
+</div>
 
-## Available Scripts
+# Built With:
 
-In the project directory, you can run:
+<div align="center">
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+  <img src="https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white" />
+  <img src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E" /> 
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" /> 
+  <img src="https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white" />
 
-### `npm start`
+</div>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Abstract: 
+This is a virtual grocery store that fetches information from the Edamam Food Database API. This web app allows users to search for products, add them to their cart, and purchase the items! The app uses search params so that users can easily share their search with others. Users are able to change the quantity of a certain item in their cart, or remove it altogether. To account for users being able to view a confirmation of their orders even after navigating away from the site, previously placed orders are saved in localStorage. This behavior is built to mimic a database, which is not implemented in this application. The app was built with React and JavaScript, using React Router for routing and Prop Types for a better development experience. Future ideas for continuing to expand on this application include adding a database to replace localStorage, saving the users current cart in session storage, and allowing users to filter products by their nutritional content. 
 
-### `npm run build`
+# Preview of App:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+https://github.com/lauraguerra1/bondadosa-code-challenge/assets/121131581/777652fb-8481-4f0f-b56f-db88a7cc7af7
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<div align="center">
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+  
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+</div>
 
-### Code Splitting
+# Dependencies 
+- [UUID](https://www.npmjs.com/package/uuid)
+- [React Router Dom](https://www.npmjs.com/package/react-router-dom)
+- [Prop Types](https://www.npmjs.com/package/prop-types)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+# Installation Instructions 
+- Fork [this](https://github.com/lauraguerra1/bondadosa-code-challenge) repository. 
+- Clone it to your local machine using the command: `git clone git@github.com:lauraguerra1/bondadosa-code-challenge.git`.
+- Run the command: `cd bondadosa-code-challenge`
+- Run the command: `npm install`
+- Run the command: `npm start`
+- Once the app has finished compiling, enter `http://localhost:3000/` into your browser to see the live web page.
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
