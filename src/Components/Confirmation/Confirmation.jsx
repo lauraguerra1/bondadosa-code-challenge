@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import './Confirmation.css'
 import CartItem from '../CartItem/CartItem';
+import Loading from '../Loading/Loading';
 
 const Confirmation = () => {
   const { orderId } = useParams();
@@ -16,7 +17,7 @@ const Confirmation = () => {
 
   return (
     <div>
-      {loading ? <p>loading...</p> : purchasedOrder ? 
+      {loading ? <Loading /> : purchasedOrder ? 
         <div className='confirmation'>
           <div>
             <h2 className='semi-bold'>Thank you for your order!</h2>

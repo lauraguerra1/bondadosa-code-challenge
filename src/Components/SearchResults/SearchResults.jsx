@@ -4,19 +4,25 @@ import { getItem, getMoreItems } from '../../utils/apiCalls';
 import './SearchResults.css';
 import brokenImg from '../../images/broken-img.png';
 import QuantityChanger from '../QuanityChanger/QuantityChanger.jsx';
+import Loading from '../Loading/Loading.jsx';
 
 const SearchResults = ({ searchParams, cart, updateCart, changeQuantity }) => {
   const [searchResults, setSearchResults] = useState([]);
-  const [nextApi, setNextApi] = useState('')
+  const [nextApi, setNextApi] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const callAPI = async (apiCall, argument, type) => {
+    setLoading(true);
     try {
       const data = await apiCall(argument);
       type === 'new' ? setSearchResults(data.hints) : setSearchResults(prev => [...prev, ...data.hints])
-      if(data["_links"].next.href) setNextApi(data["_links"].next.href)
+      if (data["_links"].next.href) setNextApi(data["_links"].next.href);
+      setLoading(false);
     } catch (error) {
-      console.log(error);
+      setError(error);
       setSearchResults([])
+      setLoading(false);
     }
   };
 
@@ -40,6 +46,9 @@ const SearchResults = ({ searchParams, cart, updateCart, changeQuantity }) => {
     if (!acc.find(item => curr.food.foodId === item.food.foodId)) acc.push(curr);
     return acc;
   }, [])
+
+  if (loading) return <Loading />
+  // if (error) return <Error error={error} />
 
   return (
     <section className='results-page'>
