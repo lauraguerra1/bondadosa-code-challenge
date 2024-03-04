@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import './Confirmation.css'
+import CartItem from '../CartItem/CartItem';
 
 const Confirmation = () => {
   const { orderId } = useParams();
@@ -35,6 +36,12 @@ const Confirmation = () => {
           </div>
           <div>
             <h3>Order details</h3>
+            <div className='order-items'>
+              {purchasedOrder.cart.map(item => <CartItem key={item.food.foodId} item={item} />)}
+              <div className='flex order-total'>
+                <p>TOTAL:</p><p aria-description='quantity of items in cart'>{purchasedOrder.total} ITEMS</p>
+              </div>
+            </div>
           </div>
         </div>
         : <p>We couldnt find that order </p>
