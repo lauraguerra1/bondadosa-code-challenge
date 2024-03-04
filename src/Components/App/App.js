@@ -1,6 +1,6 @@
 import './App.css';
 import { useEffect, useState } from 'react';
-import { Routes, Route, Link, useSearchParams, useLocation, useNavigate } from 'react-router-dom';
+import { Routes, Route, Link, useSearchParams, useLocation } from 'react-router-dom';
 import Home from '../Home/Home';
 import Cart from '../Cart/Cart';
 import SearchBar from '../SearchBar/SearchBar';
@@ -10,7 +10,6 @@ import Confirmation from '../Confirmation/Confirmation';
 import NotFound from '../NotFound.jsx/NotFound';
 
 function App() {
-  const navigate = useNavigate();
   const location = useLocation();
   const [orderId, setOrderId] = useState('');
   const [cart, setCart] = useState([]);

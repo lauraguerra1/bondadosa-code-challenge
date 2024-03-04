@@ -23,7 +23,7 @@ const Cart = ({ openOrCloseCart, cartOpen, cart, updateCart, changeQuantity, car
   }
 
   return (
-    <aside className={`cart ${cartOpen ? 'open' : 'closed'}`}>
+    <aside aria-expanded={cartOpen} className={`cart ${cartOpen ? 'open' : 'closed'}`}>
       <div className='cart-top'>
         <button  className='clear-btn' onClick={openOrCloseCart}>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="icon">
