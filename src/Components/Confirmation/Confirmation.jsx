@@ -35,7 +35,7 @@ const Confirmation = () => {
             </div>
           </div>
           <div>
-            <h3>Order details</h3>
+            <h3>Order Summary</h3>
             <div className='order-items'>
               {purchasedOrder.cart.map(item => <CartItem key={item.food.foodId} item={item} />)}
               <div className='flex order-total'>
