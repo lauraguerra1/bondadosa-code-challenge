@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import './Order.css'
 import { useNavigate, useParams } from 'react-router-dom';
 import CartItem from '../CartItem/CartItem';
+import NotFound from '../NotFound.jsx/NotFound';
 
 const Order = ({ openOrCloseCart, cart, cartTotal, clearCart, endOrder, orderID }) => {
   const { orderId } = useParams();
@@ -12,10 +13,7 @@ const Order = ({ openOrCloseCart, cart, cartTotal, clearCart, endOrder, orderID 
     const orderPlaced = localStorage.getItem(orderId);
     if (orderPlaced) {
       navigate(`/order/${orderId}/confirmation`);
-    } else if (orderID !== orderId) {
-      navigate('/');
-    }
-
+    } 
   }, [orderId])
 
   const [order, setOrder] = useState({
@@ -39,6 +37,11 @@ const Order = ({ openOrCloseCart, cart, cartTotal, clearCart, endOrder, orderID 
     localStorage.setItem(orderId, JSON.stringify(order));
     navigate(`/order/${orderId}/confirmation`);
     clearCart();
+    endOrder();
+  }
+
+  if (orderID !== orderId) {
+    return <NotFound orderId={orderId} />
   }
 
   return (

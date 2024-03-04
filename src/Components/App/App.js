@@ -7,6 +7,7 @@ import SearchBar from '../SearchBar/SearchBar';
 import SearchResults from '../SearchResults/SearchResults';
 import Order from '../Order/Order';
 import Confirmation from '../Confirmation/Confirmation';
+import NotFound from '../NotFound.jsx/NotFound';
 
 function App() {
   const navigate = useNavigate();
@@ -31,8 +32,6 @@ function App() {
     if (!location.pathname.includes('search')) {
       setSearchTerm('');
     }
-
-    if (location.pathname === '/order') navigate('/');
   }, [location.pathname]);
 
   const openOrCloseCart = (setting = null) => {
@@ -98,6 +97,9 @@ function App() {
             <Route path='/search' element={<SearchResults searchParams={searchParams} cart={cart} updateCart={updateCart} changeQuantity={changeQuantity} />} />
             <Route path='/order/:orderId' element={<Order orderID={orderId} endOrder={endOrder} cart={cart} openOrCloseCart={openOrCloseCart} cartTotal={cartTotal} clearCart={clearCart} />} />
             <Route path='/order/:orderId/confirmation' element={<Confirmation />} />
+            {['/order', '*'].map((path) => (
+              <Route key={path} path={path} element={<NotFound />} />
+            ))}
           </Routes>
         </div>
         <Cart startOrder={startOrder} openOrCloseCart={openOrCloseCart} cartOpen={cartOpen} cart={cart} updateCart={updateCart} changeQuantity={changeQuantity} cartTotal={cartTotal} />
