@@ -17,19 +17,24 @@ const Confirmation = () => {
     <div>
       {loading ? <p>loading...</p> : purchasedOrder ? 
         <div className='confirmation'>
-          <h2 className='semi-bold'>Thank you for your order!</h2>
-          <div className='order-details'>
-            <p>Order Number:</p>
-            <p className='info'>{purchasedOrder.orderId}</p>
-            <p>Order Total:</p>
-            <p className='info'>{purchasedOrder.total}</p>
-            <p>Shipping To:</p>
-            <div className='info'>
-              <p className='semi-bold'>{purchasedOrder.name}</p>
-              <p>{purchasedOrder.address}, {purchasedOrder.city}, {purchasedOrder.state} {purchasedOrder.zipCode}</p>
+          <div>
+            <h2 className='semi-bold'>Thank you for your order!</h2>
+            <div className='order-details'>
+              <p className='title'>Order Number:</p>
+              <p className='info'>{purchasedOrder.orderId}</p>
+              <p className='title'>Order Total:</p>
+              <p className='info'>{purchasedOrder.total} item{purchasedOrder.total !== 1 ? 's' : ''}</p>
+              <p className='title'>Shipping To:</p>
+              <div className='info'>
+                <p className='semi-bold'>{purchasedOrder.name}</p>
+                <p>{purchasedOrder.address}, {purchasedOrder.city}, {purchasedOrder.state} {purchasedOrder.zipCode}</p>
+              </div>
+              <p className='title'>Payment Method:</p>
+              <p className='info'>{purchasedOrder.payment.toUpperCase()}</p>
             </div>
-            <p>Payment Method:</p>
-            <p className='info'>{purchasedOrder.payment.toUpperCase()}</p>
+          </div>
+          <div>
+            <h3>Order details</h3>
           </div>
         </div>
         : <p>We couldnt find that order </p>
