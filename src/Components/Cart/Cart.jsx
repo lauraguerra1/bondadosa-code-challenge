@@ -43,7 +43,7 @@ const Cart = ({ openOrCloseCart, cartOpen, cart, updateCart, changeQuantity, car
       </div>
       {
         location.pathname.includes('order') || !cartTotal
-          ? <button onClick={continueShopping} className='checkout-btn'>Continue Shopping</button>
+          ? <button onClick={location.pathname.includes('search') ? () => openOrCloseCart(false) : () => continueShopping()} className='checkout-btn'>Continue Shopping</button>
           : <button onClick={generateOrder} className='checkout-btn'>CHECKOUT {cartTotal} ITEM{cartTotal !== 1 ? 'S' : ''}</button>
       }
     </aside>
